@@ -1,10 +1,10 @@
 
---Phonics by bacon and Neuromancer
+--phonics_tsalagi by bacon and Neuromancer and yona
 --License code and textures WTFPL 
  
---For now you can left click the blue blocks and they make phonics sounds and light up.  
+--For now you can left click the blue blocks and they make phonics_tsalagi sounds and light up.  
 
---Start by placing the blue phonics blocks and left clicking on them to hear their sounds.  They also light up.
+--Start by placing the blue phonics_tsalagi blocks and left clicking on them to hear their sounds.  They also light up.
 --Next place a "sound out word" block (the one with a mouth on it) and then build a word by placing the blue blocks next to it.
 --Left Click (punch) the mouth block to hear the word you built sounded out.
 
@@ -14,7 +14,7 @@
 --***put a limit on how far away page finish can be from page start on x and z axis.
 
 --Add a chat command allowing a teaching player to type in words that appear as phonics.  That way the learning player must either 
---read what the teacher types in chat, or sound out the phonics blocks that appear above the teacher's head.  Then it is just free play
+--read what the teacher types in chat, or sound out the phonics_tsalagi blocks that appear above the teacher's head.  Then it is just free play
 --in whatever peak's the learner's interest.
 --Chat command /ph will display a Sentence Block, plus what they typed with a sayWord block in front of every word.
 --if the sentence block is deleted, the whole sentence is deleted.
@@ -41,70 +41,187 @@
 --TODO:
 --punch scroll blanks the page again.
 --dig scroll deletes the page.
-
+--add tsalagi estern dialect
 local page_start
 local page_end
 local message_index
 
-phonics = {
+phonics_tsalagi = {
 	a={name="a", length=.4, gain=1, is_letter=1},
 	_a={name="_a", length=.5, gain=1, is_letter=0},
-	ar={name="ar", length=.93, gain=1, is_letter=0},
-	au={name="au", length=.52, gain=1, is_letter=0},
-	b={name="b", length=.35, gain=1, is_letter=1},
-	c={name="c", length=.3, gain=1, is_letter=1},
-	ch={name="ch", length=.17, gain=1, is_letter=0},
-	d={name="d", length=.77, gain=1, is_letter=1},
 	e={name="e", length=.65, gain=1, is_letter=1},
 	_e={name="_e", length=.64, gain=1, is_letter=0},
-	er={name="er", length=.65, gain=1, is_letter=0},
-	f={name="f", length=.7, gain=1, is_letter=1},
-	g={name="g", length=.14, gain=1, is_letter=1},
-	h={name="h", length=.48, gain=1, is_letter=1},
 	i={name="i", length=.65, gain=1, is_letter=1},
 	_i={name="_i", length=.45, gain=1, is_letter=0},
-	ing={name="ing", length=.67, gain=1, is_letter=0},
-	j={name="j", length=.20, gain=1, is_letter=1},
-	k={name="k", length=.3, gain=1, is_letter=1},
-	l={name="l", length=.65, gain=1, is_letter=1},
-	m={name="m", length=.65, gain=1, is_letter=1},
-	n={name="n", length=.65, gain=1, is_letter=1},
-	o={name="o", length=.65, gain=1, is_letter=1},
+	o={name="o", length=.65, gain=1, is_letter=0},
 	_o={name="_o", length=.65, gain=1, is_letter=0},
-	_oo={name="_oo", length=.65, gain=1, is_letter=0},
-	oo={name="oo", length=.65, gain=1, is_letter=0},
-	ou={name="ou", length=.6, gain=1, is_letter=0},
-	p={name="p", length=.35, gain=1, is_letter=1},
-	q={name="q", length=.15, gain=1, is_letter=1},
-	r={name="r", length=.65, gain=1, is_letter=1},
-	s={name="s", length=.65, gain=1, is_letter=1},
-	sh={name="sh", length=.65, gain=1, is_letter=0},
-	t={name="t", length=.3, gain=1, is_letter=1},
-	th={name="th", length=.18, gain=1, is_letter=0},
 	u={name="u", length=.65, gain=1, is_letter=1},	
 	_u={name="_u", length=.92, gain=1, is_letter=0},	
-	v={name="v", length=.65, gain=1, is_letter=1},
-	w={name="w", length=.45, gain=1, is_letter=1},
-	--wh={name="wh", length=.23, gain=1, is_letter=0},
-	x={name="x", length=.6, gain=1, is_letter=1},
-	y={name="y", length=.84, gain=1, is_letter=1},		
-	z={name="z", length=.65, gain=1, is_letter=1}
+	v={name="v", length=.65, gain=1, is_letter=1},	
+	s={name="s", length=.92, gain=1, is_letter=1},
+	ga={name="ga", length=.90, gain=1, is_letter=0},
+	ka={name="ka", length=.90, gain=1, is_letter=0},
+	ge={name="ge", length=.90, gain=1, is_letter=0},
+	gi={name="gi", length=.90, gain=1, is_letter=1},
+	go={name="go", length=.90, gain=1, is_letter=0},
+	gu={name="gu", length=.90, gain=1, is_letter=0},
+	gv={name="gv", length=.90, gain=1, is_letter=0},
+	ha={name="ha", length=.90, gain=1, is_letter=0},
+	he={name="he", length=.90, gain=1, is_letter=0},
+	hi={name="hi", length=.90, gain=1, is_letter=0},
+	ho={name="ho", length=.90, gain=1, is_letter=0},
+	hu={name="hu", length=.90, gain=1, is_letter=0},
+	hv={name="hv", length=.90, gain=1, is_letter=0},
+	la={name="la", length=.90, gain=1, is_letter=0},
+	le={name="le", length=.90, gain=1, is_letter=0}, 
+	li={name="li", length=.90, gain=1, is_letter=0},
+	lo={name="lo", length=.90, gain=1, is_letter=0},
+	lu={name="lu", length=.90, gain=1, is_letter=0},
+	lv={name="lv", length=.90, gain=1, is_letter=0},
+	ma={name="ma", length=.90, gain=1, is_letter=0},
+	me={name="me", length=.90, gain=1, is_letter=0},
+	mi={name="mi", length=.90, gain=1, is_letter=0},
+	mo={name="mo", length=.90, gain=1, is_letter=0},
+	mu={name="mu", length=.90, gain=1, is_letter=0},
+	na={name="na", length=.90, gain=1, is_letter=0},
+        hna={name="hna", length=.90, gain=1, is_letter=0},
+	nah={name="nah", length=.90, gain=1, is_letter=0},	
+	ne={name="ne", length=.90, gain=1, is_letter=0},
+	ni={name="ni", length=.90, gain=1, is_letter=0},
+	no={name="no", length=.90, gain=1, is_letter=0},
+	nu={name="nu", length=.90, gain=1, is_letter=0},
+	nv={name="nv", length=.90, gain=1, is_letter=0},
+	qua={name="qua", length=.90, gain=1, is_letter=0},
+	que={name="que", length=.90, gain=1, is_letter=0},
+	qui={name="qui", length=.90, gain=1, is_letter=0}, 
+	qwo={name="quo", length=.90, gain=1, is_letter=0},
+	quu={name="quu", length=.90, gain=1, is_letter=0},
+	quv={name="quv", length=.90, gain=1, is_letter=0},
+	sa={name="sa", length=.90, gain=1, is_letter=0},
+	se={name="se", length=.90, gain=1, is_letter=0},
+	si={name="si", length=.90, gain=1, is_letter=0},
+	so={name="so", length=.90, gain=1, is_letter=0},
+	su={name="su", length=.90, gain=1, is_letter=0},
+	sv={name="sv", length=.90, gain=1, is_letter=0},
+	da={name="da", length=.90, gain=1, is_letter=0},
+	ta={name="ta", length=.90, gain=1, is_letter=0},
+	de={name="de", length=.90, gain=1, is_letter=0},
+	te={name="te", length=.90, gain=1, is_letter=0},
+	di={name="di", length=.90, gain=1, is_letter=0},
+	ti={name="ti", length=.90, gain=1, is_letter=0},
+	["do"]={name="do", length=.90, gain=1, is_letter=0},
+	du={name="du", length=.90, gain=1, is_letter=0},
+	dv={name="dv", length=.90, gain=1, is_letter=0},
+	dla={name="dla", length=.90, gain=1, is_letter=0},
+	tla={name="tla", length=.90, gain=1, is_letter=0},
+	tle={name="tle", length=.90, gain=1, is_letter=0},
+	tli={name="tli", length=.90, gain=1, is_letter=0},
+	tlo={name="tlo", length=.90, gain=1, is_letter=0},
+	tlu={name="tlu", length=.90, gain=1, is_letter=0},
+	tlv={name="tlv", length=.90, gain=1, is_letter=0},
+	tsa={name="tsa", length=.90, gain=1, is_letter=0},
+	tse={name="tse", length=.90, gain=1, is_letter=0},
+	tsi={name="tsi", length=.90, gain=1, is_letter=0},
+	tso={name="tso", length=.90, gain=1, is_letter=0},
+	tsu={name="tsu", length=.90, gain=1, is_letter=0},
+	tsv={name="tsv", length=.90, gain=1, is_letter=0},
+	wa={name="wa", length=.90, gain=1, is_letter=0},
+	we={name="we", length=.90, gain=1, is_letter=0},
+	wi={name="wi", length=.90, gain=1, is_letter=0},
+	wo={name="wo", length=.90, gain=1, is_letter=0},
+	wu={name="wu", length=.90, gain=1, is_letter=0},
+	wv={name="wv", length=.90, gain=1, is_letter=0},
+	ya={name="ya", length=.90, gain=1, is_letter=0},
+	ye={name="ye", length=.90, gain=1, is_letter=0},
+	yi={name="yi", length=.90, gain=1, is_letter=0},
+	yo={name="yo", length=.90, gain=1, is_letter=0},
+	yu={name="yu", length=.90, gain=1, is_letter=0},
+	yv={name="yv", length=.90, gain=1, is_letter=0},
 }
-
-two_char_phonics = {
-	ar= {name="ar"},
-	au= {name="au"},
-	ch= {name="ch"},
-	er= {name="er"},
-	oo= {name="oo"},
-	ou= {name="ou"},
-	sh= {name="sh"},
-	th= {name="th"},
+	
+two_char_phonics_tsalagi = {
+	ga= {name="ga"},
+	ka= {name="ka"},
+	ge= {name="ge"},
+	gi= {name="gi"},
+	go= {name="go"},
+	gu= {name="gu"},
+	gv= {name="gv"},
+	ha= {name="ha"},
+	he= {name="he"},
+	hi= {name="hi"},
+	ho= {name="ho"},
+	hu= {name="hu"},
+	hv= {name="hv"},
+	la= {name="la"},
+	le= {name="le"},
+	li= {name="li"},
+	lo= {name="lo"},
+	lu= {name="lu"},
+	lv= {name="lv"},
+	ma= {name="ma"},
+	me= {name="me"},
+	mi= {name="mi"},
+	mo= {name="mo"},
+	mu= {name="mu"},
+	na= {name="na"},
+	ne= {name="ne"},
+	ni= {name="ni"},
+	no= {name="no"},
+	nu= {name="nu"},
+	nv= {name="nv"},
+	sa= {name="sa"},
+	se= {name="se"},
+	si= {name="si"},
+	so= {name="so"},
+	su= {name="su"},
+	sv= {name="sv"},
+	da= {name="da"},
+	ta= {name="ta"},
+	de= {name="de"},
+	te= {name="te"},
+	di= {name="di"},
+	ti= {name="ti"},
+	["do"]= {name="do"},
+	du= {name="du"},
+	dv= {name="dv"},
+	wa= {name="wa"},
+	we= {name="we"},
+	wi= {name="wi"},
+	wo= {name="wo"},
+	wu= {name="wu"},
+	wv= {name="wv"},
+	ya= {name="ya"},
+	ye= {name="ye"},
+	yi= {name="yi"},
+	yo= {name="yo"},
+	yu= {name="yu"},
+	yv= {name="yv"},
 	--wh= {name="wh"}	
 }
 
-three_char_phonics = {
-	ing= {name="ing"}
+three_char_phonics_tsalagi = {
+	hna= {name="hna"},
+	nah= {name="nah"},
+	qua= {name="qua"},
+	que= {name="que"},
+	qui= {name="qui"},
+	qwo= {name="quo"},
+	quu= {name="quu"},
+	quv= {name="quv"},
+	dla= {name="dla"},
+	tla= {name="tla"},
+	tle= {name="tle"},
+	tli= {name="tli"},
+	tlo= {name="tlo"},
+	tlu= {name="tlu"},
+	tlv= {name="tlv"},
+	tsa= {name="tsa"},
+	tse= {name="tse"},
+	tsi= {name="tsi"},
+	tso= {name="tso"},
+	tsu= {name="tsu"},
+	tsv= {name="tsv"},
 }
 
 local words = {
@@ -112,10 +229,10 @@ local words = {
 }
 
 
-for key,value in pairs(phonics) do
-	minetest.register_node("phonics:"..key, {
+for key,value in pairs(phonics_tsalagi) do
+	minetest.register_node("phonics_tsalagi:"..key, {
 	description = key,
-	tiles = {"phonics_"..key..".jpg"},
+	tiles = {"phonics_tsalagi_"..key..".jpg"},
 	is_ground_content = true,
 	groups = {cracky=3, choppy=3},
 	sounds = default.node_sound_stone_defaults(),
@@ -124,22 +241,22 @@ for key,value in pairs(phonics) do
 		hit_with = puncher:get_wielded_item()
 		wear=hit_with:get_wear()
  		if wear == 0 then       
-			activate_node({pos, key, phonics[key].length})
+			activate_node({pos, key, phonics_tsalagi[key].length})
 		end
 	end,	
 	})
-	minetest.register_node("phonics:"..key.."_active", {
+	minetest.register_node("phonics_tsalagi:"..key.."_active", {
 	description = key.."_active",
-	tiles = {"phonics_"..key.."_active.png"},
+	tiles = {"phonics_tsalagi_"..key.."_active.png"},
 	light_source = 20,
 	is_ground_content = true,
 	groups = {cracky=3, choppy=3, not_in_creative_inventory=1},
 	sounds = default.node_sound_stone_defaults(),
 	})	
-	if  phonics[key].is_letter ==1 then	
-		minetest.register_node("phonics:0"..key, {
+	if  phonics_tsalagi[key].is_letter ==1 then	
+		minetest.register_node("phonics_tsalagi:0"..key, {
 		description = "Silent "..key,
-		tiles = {"phonics_0"..key..".png"},
+		tiles = {"phonics_tsalagi_0"..key..".png"},
 		is_ground_content = true,
 		groups = {cracky=3, choppy=3},
 		sounds = default.node_sound_stone_defaults(),
@@ -148,7 +265,7 @@ for key,value in pairs(phonics) do
 end
 
 
-minetest.register_node("phonics:question_mark", {
+minetest.register_node("phonics_tsalagi:question_mark", {
 	description = "Question Mark",
 	tiles = {
 	"question_mark.png",},
@@ -160,7 +277,7 @@ minetest.register_node("phonics:question_mark", {
 --	on_punch = function(pos, node, puncher)      
 --	end
 })
-minetest.register_node("phonics:exclamation_point", {
+minetest.register_node("phonics_tsalagi:exclamation_point", {
 	description = "Exclamation Point",
 	tiles = {
 	"exclamation_point.png",},
@@ -172,7 +289,7 @@ minetest.register_node("phonics:exclamation_point", {
 --	on_punch = function(pos, node, puncher)      
 --	end
 })
-minetest.register_node("phonics:period", {
+minetest.register_node("phonics_tsalagi:period", {
 	description = "Period",
 	tiles = {
 	"period.png",},
@@ -185,7 +302,7 @@ minetest.register_node("phonics:period", {
 --	end
 })
 
-minetest.register_node("phonics:SayWord", {
+minetest.register_node("phonics_tsalagi:SayWord", {
 	description = "say word",
 	tiles = {
 	"white.jpg",
@@ -210,7 +327,7 @@ minetest.register_node("phonics:SayWord", {
 
 
 
-minetest.register_node("phonics:PaperStart", {
+minetest.register_node("phonics_tsalagi:PaperStart", {
 	description = "Paper Start",
 	tiles = {
 	"white.jpg",
@@ -239,7 +356,7 @@ minetest.register_node("phonics:PaperStart", {
 	end,
 	after_dig_node = function(pos, oldnode, oldmetadata, digger)
         local player = digger:get_player_name()
-        local itemstack = ItemStack("phonics:PaperStart")
+        local itemstack = ItemStack("phonics_tsalagi:PaperStart")
         local inv = minetest.get_inventory({type = "player", name = player})
 
         if inv and inv:room_for_item("main", itemstack) then
@@ -257,16 +374,16 @@ function clear_page(pos)
       clear_pos.y = pos.y 
       clear_pos.z = pos.z 
 
-	replace_page(clear_pos, "x", 1, "phonics:BlankPaper")
-	replace_page(clear_pos, "x", -1, "phonics:BlankPaper")
-	replace_page(clear_pos, "z", 1, "phonics:BlankPaper")
-	replace_page(clear_pos, "z", -1, "phonics:BlankPaper")
-	replace_column(clear_pos, "phonics:BlankPaper")
+	replace_page(clear_pos, "x", 1, "phonics_tsalagi:BlankPaper")
+	replace_page(clear_pos, "x", -1, "phonics_tsalagi:BlankPaper")
+	replace_page(clear_pos, "z", 1, "phonics_tsalagi:BlankPaper")
+	replace_page(clear_pos, "z", -1, "phonics_tsalagi:BlankPaper")
+	replace_column(clear_pos, "phonics_tsalagi:BlankPaper")
 	page_start = pos
 	page_end = pos
 end
 	    
-minetest.register_node("phonics:PaperFinish", {
+minetest.register_node("phonics_tsalagi:PaperFinish", {
 	description = "Paper Finish",
 	tiles = {
 	"white.jpg",
@@ -284,7 +401,7 @@ minetest.register_node("phonics:PaperFinish", {
 		blank_page(pos)
 	end
 })
-minetest.register_node("phonics:BlankPaper", {
+minetest.register_node("phonics_tsalagi:BlankPaper", {
 	description = "Blank Paper",
 	tiles = {
 	"white.jpg",
@@ -322,23 +439,23 @@ end
 
 local play_sound = function(list, soundname)
 		local gain = 1.0
-		local handler = minetest.sound_play("phonics_"..soundname, {gain=gain})
+		local handler = minetest.sound_play("phonics_tsalagi_"..soundname, {gain=gain})
 end
 
 function revertnode(parms)  
  	local pos3 = parms[1]
  	local node3= parms[2]
- 	minetest.env:remove_node(pos3,{name="phonics:"..node3.."_active"})
- 	minetest.env:place_node(pos3,{name="phonics:"..node3})
+ 	minetest.env:remove_node(pos3,{name="phonics_tsalagi:"..node3.."_active"})
+ 	minetest.env:place_node(pos3,{name="phonics_tsalagi:"..node3})
 end
 
 function activate_node(anparms)
 	local pos2 = anparms[1]
 	local nodename = anparms[2]
 	local duration = anparms[3]
- 	minetest.env:remove_node(pos2,{name="phonics:"..nodename})
- 	minetest.env:place_node(pos2,{name="phonics:"..nodename.."_active"}) 
- 	play_sound(phonics, nodename) 
+ 	minetest.env:remove_node(pos2,{name="phonics_tsalagi:"..nodename})
+ 	minetest.env:place_node(pos2,{name="phonics_tsalagi:"..nodename.."_active"}) 
+ 	play_sound(phonics_tsalagi, nodename) 
  	local np = {}  --needed this because the node being passed to revertnode was incremented (must have been by reference
               np.x = pos2.x 
               np.y = pos2.y 
@@ -375,15 +492,15 @@ function sound_out_word(pos1, axis, direction)
 		test_pos.z=test_pos.z-(direction*2)
 	end			
 	local b4_nodename = minetest.env:get_node(test_pos).name 			
-	if b4_nodename ~="phonics:BlankPaper" then	
-	   	if test_nodename_prefix ~="phonics" or test_nodename_suffix == "BlankPaper" or test_nodename_suffix =="PaperStart" then 
+	if b4_nodename ~="phonics_tsalagi:BlankPaper" then	
+	   	if test_nodename_prefix ~="phonics_tsalagi" or test_nodename_suffix == "BlankPaper" or test_nodename_suffix =="PaperStart" then 
 	   		return
 	    end
 	end
     
     local row_count = 1
     repeat  --go to next row 1 time    	      
-		repeat  --continue sounding on this row until you reach blank paper or a non phonics node
+		repeat  --continue sounding on this row until you reach blank paper or a non phonics_tsalagi node
 			if axis == "x" then
 				mpos.x=mpos.x+direction
 			end	
@@ -394,16 +511,16 @@ function sound_out_word(pos1, axis, direction)
 			local nodenamearray = split(nodename, ":")
 			local nodename_prefix = nodenamearray[1]
 			local nodename_suffix = nodenamearray[2]
-			local delay = phonics[nodename_suffix]
-			if  delay ~=nil and nodename_prefix =="phonics"  then 		
+			local delay = phonics_tsalagi[nodename_suffix]
+			if  delay ~=nil and nodename_prefix =="phonics_tsalagi"  then 		
 				local lpos = {}  --needed this because the node being passed to revertnode was incremented (must have been by reference
 	              lpos.x = mpos.x 
 	              lpos.y = mpos.y 
 	              lpos.z = mpos.z 	
-				minetest.after(cumulative_delay, activate_node, {lpos, nodename_suffix, phonics[nodename_suffix].length}) 
-				cumulative_delay = cumulative_delay + phonics[nodename_suffix].length 
+				minetest.after(cumulative_delay, activate_node, {lpos, nodename_suffix, phonics_tsalagi[nodename_suffix].length}) 
+				cumulative_delay = cumulative_delay + phonics_tsalagi[nodename_suffix].length 
 			end
-		until nodename_prefix ~="phonics" or nodename_suffix == "BlankPaper"
+		until nodename_prefix ~="phonics_tsalagi" or nodename_suffix == "BlankPaper"
 --if I will find a BlankPaper in this row, then dont look in next row
 		local find_blank_pos = {}  --needed this because the node being passed to revertnode was incremented (must have been by reference
       	find_blank_pos.x = mpos.x 
@@ -425,9 +542,9 @@ function sound_out_word(pos1, axis, direction)
 			if axis == "z" then
 					find_blank_pos.z=find_blank_pos.z+direction
 			end			
-		until find_blank_nodename_prefix ~="phonics"--prefix not phonics
+		until find_blank_nodename_prefix ~="phonics_tsalagi"--prefix not phonics_tsalagi
 
---we're not done, so search next row for more phonics to sound out
+--we're not done, so search next row for more phonics_tsalagi to sound out
 		local new_row_pos = {}  --needed this because the node being passed to revertnode was incremented (must have been by reference
       	new_row_pos.x = mpos.x 
       	new_row_pos.y = mpos.y 
@@ -450,7 +567,7 @@ function sound_out_word(pos1, axis, direction)
 			mpos.x = new_row_pos.x 
 			mpos.y = new_row_pos.y
 			mpos.z = new_row_pos.z
-		until new_row_nodename_prefix ~="phonics"
+		until new_row_nodename_prefix ~="phonics_tsalagi"
 		row_count= row_count +1
 	until row_count >2 or nodename_suffix == "BlankPaper"
 end
@@ -490,7 +607,7 @@ function write_message_to_page_on_axis(pos, axis, direction,message)
     local first_nodename = minetest.env:get_node(first_position).name 
 	local firstnamearray = split(first_nodename, ":")
 	local firstname_prefix = firstnamearray[1]
-	if firstname_prefix == "phonics" then  --we have phonics on this axis		      
+	if firstname_prefix == "phonics_tsalagi" then  --we have phonics_tsalagi on this axis		      
 		repeat
 			local current_nodename = minetest.env:get_node(page_position).name 
 			local nodenamearray = split(current_nodename, ":")
@@ -498,7 +615,7 @@ function write_message_to_page_on_axis(pos, axis, direction,message)
 			local nodename_suffix = nodenamearray[2]
 			write_page_row(page_position, axis, direction,message)
 			page_position.y = page_position.y-1
-		until nodename_prefix ~="phonics" or message_index > string.len(message)		
+		until nodename_prefix ~="phonics_tsalagi" or message_index > string.len(message)		
 	end
 end
 
@@ -509,34 +626,34 @@ function write_page_row(pos, axis, direction, message)
     replace_pointer.y = pos.y 
     replace_pointer.z = pos.z 
 	local nodename = minetest.env:get_node(replace_pointer).name 
-	if nodename=="phonics:PaperStart" then
+	if nodename=="phonics_tsalagi:PaperStart" then
 		if axis == "x" then
 			replace_pointer.x=replace_pointer.x+direction
-			new_nodename ="phonics:SayWord" 
+			new_nodename ="phonics_tsalagi:SayWord" 
 			minetest.env:add_node(replace_pointer, {name=new_nodename})	
 			replace_pointer.x=replace_pointer.x+direction
 		end	
 		if axis == "z" then
 			replace_pointer.z=replace_pointer.z+direction
-			new_nodename ="phonics:SayWord"
+			new_nodename ="phonics_tsalagi:SayWord"
 			minetest.env:add_node(replace_pointer, {name=new_nodename})	
 			replace_pointer.z=replace_pointer.z+direction
 		end	
 	end	
 --1get me node at current location
---2if node prefix is phonics then replace node with next phonic in the message
+--2if node prefix is phonics_tsalagi then replace node with next phonic in the message
 --3(and have some code behind the scenes automatically bump the message_index)
 --4increment the replace pointer
---5repeat 1-4 until node prefix at current location is not phonics	
+--5repeat 1-4 until node prefix at current location is not phonics_tsalagi	
 	repeat
 		local nodename = minetest.env:get_node(replace_pointer).name 
 		local nodenamearray = split(nodename, ":")
 		local nodename_prefix = nodenamearray[1]
 		local nodename_suffix = nodenamearray[2]
-		if nodename_prefix =="phonics"  then 			
-			if new_nodename =="phonics:BlankPaper" then
+		if nodename_prefix =="phonics_tsalagi"  then 			
+			if new_nodename =="phonics_tsalagi:BlankPaper" then
 			--if we had a space between words then inject sayword block into stream
-				new_nodename ="phonics:SayWord"
+				new_nodename ="phonics_tsalagi:SayWord"
 				minetest.env:add_node(replace_pointer, {name=new_nodename})				
 			else
 				new_nodename = get_next_phonic_in_message(message)
@@ -553,7 +670,7 @@ function write_page_row(pos, axis, direction, message)
 				end				
 			end
 		end
-	until nodename_prefix ~="phonics" or message_index > string.len(message)	
+	until nodename_prefix ~="phonics_tsalagi" or message_index > string.len(message)	
 end
 
 function get_next_phonic_in_message(message)
@@ -561,44 +678,44 @@ function get_next_phonic_in_message(message)
 	string.len(message)
 	if message_index <= string.len(message) then
 		local current_char_in_message = string.sub(message,message_index,message_index)	
-		phonic_builder = current_char_in_message
+		phonics_tsalagi = current_char_in_message
 		--if currentchar=" " then just set cpim to blankPaper and skip all the char business"
 		if current_char_in_message==" " then 
-			current_phonic_in_message = "phonics:BlankPaper"
+			current_phonic_in_message = "phonics_tsalagi:BlankPaper"
 		elseif current_char_in_message=="." then 
-			current_phonic_in_message = "phonics:period"
+			current_phonic_in_message = "phonics_tsalagi:period"
 		elseif current_char_in_message=="?" then 
-			current_phonic_in_message = "phonics:question_mark"			
+			current_phonic_in_message = "phonics_tsalagi:question_mark"			
 		elseif current_char_in_message=="!" then 
-			current_phonic_in_message = "phonics:exclamation_point"						
+			current_phonic_in_message = "phonics_tsalagi:exclamation_point"						
 		else
 			if current_char_in_message == "0" or current_char_in_message == "_" then			
 				message_index = message_index +1
 				current_char_in_message = string.sub(message,message_index,message_index)		
-				phonic_builder = phonic_builder..current_char_in_message
+				phonics_tsalagi = phonics_tsalagi..current_char_in_message
 			end	
 			char_after_current_char = string.sub(message,message_index+1,message_index+1)
 			third_char = string.sub(message,message_index+2,message_index+2)
 			two_chars = current_char_in_message..char_after_current_char
 			three_chars = two_chars..third_char
-			--minetest.log("x", "phonic_builder: "..phonic_builder)
-			--minetest.log("x", "phonic_builder 1st char: "..string.sub(phonic_builder,1,1))
+			--minetest.log("x", "phonics_tsalagi: "..phonics_tsalagi)
+			--minetest.log("x", "phonics_tsalagi 1st char: "..string.sub(phonics_tsalagi,1,1))
 			--minetest.log("x", "two_chars: "..two_chars)
 			--check to see if this is a 2 character phonic.  But only if it doesn't begin with an "_" or if it is _oo.
 			--this is because the only two character phonic that can use the "_" prefix is the "_oo" phonic.
-			if (two_char_phonics[two_chars] ~= nil and string.sub(phonic_builder,1,1) ~= "_" and string.sub(phonic_builder,1,1) ~= "0") or (two_chars == "oo" and string.sub(phonic_builder,1,1) ~= "0") then										
-				phonic_builder = phonic_builder..char_after_current_char
+			if (two_char_phonics_tsalagi[two_chars] ~= nil and string.sub(phonics_tsalagi,1,1) ~= "_" and string.sub(phonics_tsalagi,1,1) ~= "0") or (two_chars == "oo" and string.sub(phonics_tsalagi,1,1) ~= "0") then										
+				phonics_tsalagi = phonics_tsalagi..char_after_current_char
 				message_index = message_index +1
 			end	
-			if (three_char_phonics[three_chars] ~= nil and string.sub(phonic_builder,1,1) ~= "_" and string.sub(phonic_builder,1,1) ~= "0")then						
-				phonic_builder = phonic_builder..string.sub(message,message_index+1,message_index+2)
+			if (three_char_phonics_tsalagi[three_chars] ~= nil and string.sub(phonics_tsalagi,1,1) ~= "_" and string.sub(phonics_tsalagi,1,1) ~= "0")then						
+				phonics_tsalagi = phonics_tsalagi..string.sub(message,message_index+1,message_index+2)
 				message_index = message_index +2
 			end			
-			current_phonic_in_message = "phonics:"..phonic_builder
+			current_phonic_in_message = "phonics_tsalagi:"..phonics_tsalagi
 		end
 		message_index = message_index +1	
 	else
-		current_phonic_in_message = "phonics:BlankPaper"
+		current_phonic_in_message = "phonics_tsalagi:BlankPaper"
 	end 	
 	return current_phonic_in_message			
 end
@@ -615,7 +732,7 @@ function replace_page(pos, axis, direction,new_nodename)
 		local nodename_suffix = nodenamearray[2]
 		replace_page_row(replace_row_pos, axis, direction,new_nodename)
 		replace_row_pos.y = replace_row_pos.y-1
-	until nodename_prefix ~="phonics"	
+	until nodename_prefix ~="phonics_tsalagi"	
 end
 
 function replace_column(pos, new_nodename)
@@ -625,16 +742,16 @@ function replace_column(pos, new_nodename)
 		local nodenamearray = split(current_nodename, ":")
 		local nodename_prefix = nodenamearray[1]
 		local nodename_suffix = nodenamearray[2]
-		if nodename_prefix =="phonics" then	
+		if nodename_prefix =="phonics_tsalagi" then	
 			if new_nodename =="air" then					
 				minetest.env:add_node(replace_column_pos, {name=new_nodename})			
 			end
-			if new_nodename =="phonics:BlankPaper" and current_nodename ~="phonics:PaperStart" then					
+			if new_nodename =="phonics_tsalagi:BlankPaper" and current_nodename ~="phonics_tsalagi:PaperStart" then					
 				minetest.env:add_node(replace_column_pos, {name=new_nodename})			
 			end
 		end
 		replace_column_pos.y = replace_column_pos.y-1
-	until nodename_prefix ~="phonics"
+	until nodename_prefix ~="phonics_tsalagi"
 end
 
 function replace_page_row(pos, axis, direction, new_nodename)
@@ -653,10 +770,10 @@ function replace_page_row(pos, axis, direction, new_nodename)
 		local nodenamearray = split(nodename, ":")
 		local nodename_prefix = nodenamearray[1]
 		local nodename_suffix = nodenamearray[2]
-		if  nodename_prefix =="phonics"  then 		
+		if  nodename_prefix =="phonics_tsalagi"  then 		
 			minetest.env:add_node(replace_pointer, {name=new_nodename})
 		end
-	until nodename_prefix ~="phonics"	
+	until nodename_prefix ~="phonics_tsalagi"	
 end
 
 function get_page_start_loc(pos)
@@ -668,10 +785,10 @@ function blank_page(pos)
 	if page_start ~= nil and math.abs(page_start.x-page_end.x) <20 and math.abs(page_start.y-page_end.y) <20 and math.abs(page_start.z-page_end.z) <20 then 
 		if page_end.y <= page_start.y then  --if the page end block was placed at or below page start block
 			if page_end.x == page_start.x then
-				buildwall(page_start.z, pos.z, page_start.y, pos.y, "x", pos.x, "phonics:BlankPaper")	
+				buildwall(page_start.z, pos.z, page_start.y, pos.y, "x", pos.x, "phonics_tsalagi:BlankPaper")	
 			end
 			if page_end.z == page_start.z then  
-				buildwall(page_start.x, pos.x, page_start.y, pos.y, "z", pos.z, "phonics:BlankPaper")	
+				buildwall(page_start.x, pos.x, page_start.y, pos.y, "z", pos.z, "phonics_tsalagi:BlankPaper")	
 			end	
 		end	
 	end 
@@ -698,7 +815,7 @@ function buildrow(hstart, hend, y, haxis, haxis_fixed, nodename)
 			current_pos.x = hpos
 			current_pos.z = haxis_fixed		
 		end	
-		if minetest.env:get_node(current_pos).name ~= "phonics:PaperStart" then   --leave paperstart node there.
+		if minetest.env:get_node(current_pos).name ~= "phonics_tsalagi:PaperStart" then   --leave paperstart node there.
 			minetest.env:add_node(current_pos, {name=nodename})
 		end
 		hpos = hpos +1
@@ -707,7 +824,7 @@ end
 
 minetest.register_chatcommand("w", {
 	params = "<message>",
-	description = "Write phonics message on a page",
+	description = "Write phonics_tsalagi message on a page",
 	privs = {shout=true},
 	func = function(name, param)
 		if page_start == nil or page_end == nil then minetest.chat_send_player(name, "You need to create a page first") return end
@@ -718,33 +835,33 @@ function write_message(param)
 	write_message_to_page(param)		
 end	
  
---turn the phonics nodes into ores:
+--turn the phonics_tsalagi nodes into ores:
 
--- Function to generate the phonics nodes underground
+-- Function to generate the phonics_tsalagi nodes underground
 
-phonics_scarcity = tonumber(minetest.settings:get("phonics_scarcity")) or 350
+phonics_tsalagi_scarcity = tonumber(minetest.settings:get("phonics_tsalagi_scarcity")) or 350
 
-if phonics_scarcity >0 then
-	-- Register nodes based on the phonics data
-	for key, value in pairs(phonics) do
+if phonics_tsalagi_scarcity >0 then
+	-- Register nodes based on the phonics_tsalagi data
+	for key, value in pairs(phonics_tsalagi) do
 		-- Generate the nodes underground using the register_ore function
 		minetest.register_ore({
 			ore_type       = "scatter",
-			ore            = "phonics:" .. key,
+			ore            = "phonics_tsalagi:" .. key,
 			wherein        = "default:stone",
-			clust_scarcity = phonics_scarcity,
+			clust_scarcity = phonics_tsalagi_scarcity,
 			clust_num_ores = 1,
 			clust_size     = 1,
 			y_min          = -31000,  -- Adjust these values for your desired depth range
 			y_max          = 100,
 		})
 
-		if  phonics[key].is_letter ==1 then	
+		if  phonics_tsalagi[key].is_letter ==1 then	
 			minetest.register_ore({
 				ore_type       = "scatter",
-				ore            = "phonics:0" .. key,
+				ore            = "phonics_tsalagi:0" .. key,
 				wherein        = "default:stone",
-				clust_scarcity = phonics_scarcity,
+				clust_scarcity = phonics_tsalagi_scarcity,
 				clust_num_ores = 1,
 				clust_size     = 1,
 				y_min          = -31000,  -- Adjust these values for your desired depth range
@@ -754,9 +871,9 @@ if phonics_scarcity >0 then
 	end
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "phonics:SayWord",
+		ore            = "phonics_tsalagi:SayWord",
 		wherein        = "default:stone",
-		clust_scarcity = phonics_scarcity,
+		clust_scarcity = phonics_tsalagi_scarcity,
 		clust_num_ores = 1,
 		clust_size     = 1,
 		y_min          = -31000,  -- Adjust these values for your desired depth range
@@ -764,20 +881,9 @@ if phonics_scarcity >0 then
 	})
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "phonics:PaperStart",
+		ore            = "phonics_tsalagi:PaperStart",
 		wherein        = "default:stone",
-		clust_scarcity = phonics_scarcity,
-		clust_num_ores = 1,
-		clust_size     = 1,
-		y_min          = -31000,  -- Adjust these values for your desired depth range
-		y_max          = 100,
-	})
-
-	minetest.register_ore({
-		ore_type       = "scatter",
-		ore            = "phonics:PaperFinish",
-		wherein        = "default:stone",
-		clust_scarcity = phonics_scarcity,
+		clust_scarcity = phonics_tsalagi_scarcity,
 		clust_num_ores = 1,
 		clust_size     = 1,
 		y_min          = -31000,  -- Adjust these values for your desired depth range
@@ -786,9 +892,9 @@ if phonics_scarcity >0 then
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "phonics:period",
+		ore            = "phonics_tsalagi:PaperFinish",
 		wherein        = "default:stone",
-		clust_scarcity = phonics_scarcity,
+		clust_scarcity = phonics_tsalagi_scarcity,
 		clust_num_ores = 1,
 		clust_size     = 1,
 		y_min          = -31000,  -- Adjust these values for your desired depth range
@@ -797,9 +903,9 @@ if phonics_scarcity >0 then
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "phonics:exclamation_point",
+		ore            = "phonics_tsalagi:period",
 		wherein        = "default:stone",
-		clust_scarcity = phonics_scarcity,
+		clust_scarcity = phonics_tsalagi_scarcity,
 		clust_num_ores = 1,
 		clust_size     = 1,
 		y_min          = -31000,  -- Adjust these values for your desired depth range
@@ -808,9 +914,20 @@ if phonics_scarcity >0 then
 
 	minetest.register_ore({
 		ore_type       = "scatter",
-		ore            = "phonics:question_mark",
+		ore            = "phonics_tsalagi:exclamation_point",
 		wherein        = "default:stone",
-		clust_scarcity = phonics_scarcity,
+		clust_scarcity = phonics_tsalagi_scarcity,
+		clust_num_ores = 1,
+		clust_size     = 1,
+		y_min          = -31000,  -- Adjust these values for your desired depth range
+		y_max          = 100,
+	})
+
+	minetest.register_ore({
+		ore_type       = "scatter",
+		ore            = "phonics_tsalagi:question_mark",
+		wherein        = "default:stone",
+		clust_scarcity = phonics_tsalagi_scarcity,
 		clust_num_ores = 1,
 		clust_size     = 1,
 		y_min          = -31000,  -- Adjust these values for your desired depth range
@@ -819,9 +936,9 @@ if phonics_scarcity >0 then
 end
 
 
-local dpath = minetest.get_modpath("phonics") .. "/"
+local dpath = minetest.get_modpath("phonics_tsalagi") .. "/"
 dofile(dpath .. "crafting.lua")
-print("Phonics Mod Loaded!")
+print("phonics_tsalagi Mod Loaded!")
  	--minetest.env:punch_node(pos) 
  	--minetest.env:dig_node(pos) 
  	--http://minetest.net/forum/viewtopic.php?id=2602
