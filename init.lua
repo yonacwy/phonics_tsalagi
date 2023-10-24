@@ -52,7 +52,7 @@ phonics_tsalagi = {
 	qua={name="qua", length=.90, gain=1, is_letter=0},
 	que={name="que", length=.90, gain=1, is_letter=0},
 	qui={name="qui", length=.90, gain=1, is_letter=0}, 
-	qwo={name="quo", length=.90, gain=1, is_letter=0},
+	quo={name="quo", length=.90, gain=1, is_letter=0},
 	quu={name="quu", length=.90, gain=1, is_letter=0},
 	quv={name="quv", length=.90, gain=1, is_letter=0},
 	sa={name="sa", length=.90, gain=1, is_letter=0},
